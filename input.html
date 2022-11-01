@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <style>
+        header {
+            display: flex;
+            align-items: center;
+            padding: 0 100px;
+        }
+
+        header a {
+            display: block;
+            margin-right: auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-right: 40%;
+        }
+
+        .form-group {
+            margin: 20px 0;
+        }
+
+        .form-group .error-input {
+            display: none;
+        }
+
+        #dishes-form label {
+            font-weight: bold;
+        }
+
+        .button-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button-row button {
+            margin-left: 20px;
+        }
+
+        .modal {
+            z-index: 99999;
+        }
+
+        #delete-button {
+            display: none;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <a href="./index.html" class="btn btn-primary">Home</a>
+        <h1>DISH INPUT</h1>
+    </header>
+    <div class="container">
+        <form id="dishes-form" action="">
+            <div class="form-group">
+                <label for="dish-name">Product Name:</label>
+                <input type="text" class="form-control" id="dish-name" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="description" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="text" class="form-control" id="price" name="price" required>
+                <small class="error-input text-danger">Invalid price value</small>
+            </div>
+            <div class="form-group">
+                <label for="discountPrice">Discount price:</label>
+                <input type="text" class="form-control" id="discountPrice" name="discount price">
+                <small class="error-input text-danger">Invalid discount price value</small>
+                <small>Leave empty if no discount</small>
+            </div>
+            <div class="form-group">
+                <label for="imgUrl">Image URL:</label>
+                <input type="text" class="form-control" id="imgUrl" required>
+            </div>
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <select name="category" id="category" required>
+                    <option value="">Choose a category</option>
+                    <option value="1">burger</option>
+                    <option value="2">cold drink</option>
+                    <option value="3">hot drink</option>
+                    <option value="4">pasta</option>
+                    <option value="5">pizza</option>
+                    <option value="6">sweet snack</option>
+                </select>
+                <small class="error-input text-danger">*Required</small>
+            </div>
+            <div class="button-row">
+                <button id="submit-button" type="submit" class="btn btn-primary">Add Dishes</button>
+            </div>
+        </form>
+        <button id="delete-button" class="btn btn-danger">Delete Record</button>
+    </div>
+
+
+    <div id="leavePageModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Return to Main page or Adding more Dishes?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="back-index btn btn-primary">Back to Index</button>
+                    <button type="button" class="close-modal btn btn-secondary" data-dismiss="modal">Add More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="deleteRecordModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete confirmation</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete <span class="prompt-delete-dish-name"></span>?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="delete-confirm-btn btn btn-primary">Yes, I'm sure.</button>
+                    <button type="button" class="not-delete-btn btn btn-primary">No.</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="input.js"></script>
+</body>
+
+</html>
